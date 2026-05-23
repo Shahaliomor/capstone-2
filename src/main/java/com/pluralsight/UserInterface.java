@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class UserInterface {
     private Order currentOrder;
     public static Scanner input = new Scanner(System.in);
+    // Display the home screen menu
     public void displayHomeScreen(){
         System.out.println("""
                 1) New Order
@@ -13,10 +14,12 @@ public class UserInterface {
 
         int choice = input.nextInt();
         if(choice == 1){
+            currentOrder = new Order();
             System.out.println("Welcome to CHEESY BURG!");
             displayOrderScreen();
         }
         else if(choice == 0) {
+            System.out.println("Thanks for choosing CHEESY BURG, Goodbye!");
             return;
         }
         else{
@@ -26,7 +29,7 @@ public class UserInterface {
 
 
     }
-
+    // Show order options
     public void displayOrderScreen(){
         System.out.println("""
                 1) Add Sandwich
@@ -35,13 +38,38 @@ public class UserInterface {
                 4) Checkout
                 0) Cancel Order - delete the order and go back to the home page
                 """);
+        int choice = input.nextInt();
+
+        if (choice == 1) {
+            addSandwich();
+        }
+        else if (choice == 2) {
+            addDrink();
+        }
+        else if (choice == 3) {
+            addChips();
+        }
+        else if (choice == 4) {
+            checkout();
+        }
+        else if (choice == 0) {
+            currentOrder = null;
+            displayHomeScreen();
+        }
+        else {
+            System.out.println("Invalid choice. Try again.");
+            displayOrderScreen();
+        }
 
     }
-
+    // Add sandwich to current order
     public void addSandwich(){
     }
+    // Add drink to current order
     public void addDrink(){}
+    // Add Chips to current order
     public void addChips(){}
+    // Display order details and complete order
     public void checkout(){}
 
 }
