@@ -14,6 +14,7 @@ public class UserInterface {
         int choice = input.nextInt();
         if(choice == 1){
             System.out.println("Welcome to CHEESY BURG!");
+            displayOrderScreen();
         }
         else if(choice == 0) {
             return;
@@ -36,5 +37,11 @@ public class UserInterface {
                 """);
 
     }
+
+    public void addSandwich(){
+    }
+    public void addDrink(){}
+    public void addChips(){}
+    public void checkout(){}
 
 }
