@@ -11,11 +11,17 @@ public class UserInterface {
                 1) New Order
                 0) Exit - exit the application
                 """);
-
+        System.out.print("Choose an option: ");
         int choice = input.nextInt();
+        input.nextLine();
         if(choice == 1){
-            currentOrder = new Order();
-            System.out.println("Welcome to CHEESY BURG!");
+            System.out.print("Can I have your name please: ");
+            String name = input.nextLine();
+
+            currentOrder = new Order(name);
+
+            System.out.println("Welcome to CHEESY BURG, " + name + "!");
+            System.out.println("How can I help you?");
             displayOrderScreen();
         }
         else if(choice == 0) {
@@ -37,7 +43,8 @@ public class UserInterface {
                 3) Add Chips
                 4) Checkout
                 0) Cancel Order - delete the order and go back to the home page
-                """);
+                  """);
+        System.out.print("Choose an option: ");
         int choice = input.nextInt();
 
         if (choice == 1) {

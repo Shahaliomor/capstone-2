@@ -7,7 +7,7 @@ public class Order {
     private ArrayList<Drink> drinks;
     private ArrayList<Chips> chips;
     //Constructor for Order class.
-    public Order() {
+    public Order(String name) {
         this.sandwiches = new ArrayList<>();
         this.drinks = new ArrayList<>();
         this.chips = new ArrayList<>();
