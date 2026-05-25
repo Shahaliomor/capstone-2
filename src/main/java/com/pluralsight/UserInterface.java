@@ -7,10 +7,13 @@ public class UserInterface {
     private String breadType;
     private Order currentOrder;
     private String name;
+
     private double price;
+
     private String meatName;
     private double meatPrice;
     private double extraMeatPrice;
+
     private String cheeseName;
     private double cheesePrice;
     private double extraCheesePrice;
@@ -34,7 +37,6 @@ public class UserInterface {
             currentOrder = new Order(name);
 
             System.out.println("Welcome to CHEESY BURG, " + name + "!");
-            System.out.println("How can I help you?");
             displayOrderScreen();
         }
         else if (choice == 0) {
@@ -52,7 +54,7 @@ public class UserInterface {
                 2) Add Drink
                 3) Add Chips
                 4) Checkout
-                0) Cancel Order - delete the order and go back to the home page
+                0) Cancel Order
                 """);
 
         System.out.print("Choose an option: ");
@@ -85,7 +87,11 @@ public class UserInterface {
         meatName = "No meat";
         meatPrice = 0;
         extraMeatPrice = 0;
-        //Select bread
+
+        cheeseName = "No Cheese";
+        cheesePrice = 0;
+        extraCheesePrice = 0;
+
         while (true) {
             System.out.println("""
                     Select your bread:
@@ -115,14 +121,12 @@ public class UserInterface {
                 breadType = "Wrap";
                 break;
             }
-            else {
-                if (!invalidOption()) {
-                    displayOrderScreen();
-                    return;
-                }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
             }
         }
-        //Select size
+
         while (true) {
             System.out.println("""
                     Sandwich size:
@@ -150,14 +154,12 @@ public class UserInterface {
                 price = 8.50;
                 break;
             }
-            else {
-                if (!invalidOption()) {
-                    displayOrderScreen();
-                    return;
-                }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
             }
         }
-        //Select meat
+
         while (true) {
             System.out.println("""
                     Do you want meat?
@@ -170,15 +172,7 @@ public class UserInterface {
             input.nextLine();
 
             if (choice == 1) {
-                if (sandwichInch == 4) {
-                    meatPrice = 1.00;
-                }
-                else if (sandwichInch == 8) {
-                    meatPrice = 2.00;
-                }
-                else {
-                    meatPrice = 3.00;
-                }
+                meatPrice = getMeatPriceBySize();
 
                 while (true) {
                     System.out.println("""
@@ -219,14 +213,12 @@ public class UserInterface {
                         meatName = "Bacon";
                         break;
                     }
-                    else {
-                        if (!invalidOption()) {
-                            displayOrderScreen();
-                            return;
-                        }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
                     }
                 }
-                //Select extra meat
+
                 while (true) {
                     System.out.println("""
                             Do you want extra meat?
@@ -239,75 +231,52 @@ public class UserInterface {
                     input.nextLine();
 
                     if (extraChoice == 1) {
-                        if (sandwichInch == 4) {
-                            extraMeatPrice = 0.50;
-                        }
-                        else if (sandwichInch == 8) {
-                            extraMeatPrice = 1.00;
-                        }
-                        else {
-                            extraMeatPrice = 1.50;
-                        }
+                        extraMeatPrice = getExtraMeatPriceBySize();
                         break;
                     }
                     else if (extraChoice == 2) {
                         extraMeatPrice = 0;
                         break;
                     }
-                    else {
-                        if (!invalidOption()) {
-                            displayOrderScreen();
-                            return;
-                        }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
                     }
                 }
 
                 break;
             }
             else if (choice == 2) {
-                meatName = "No meat";
-                meatPrice = 0;
-                extraMeatPrice = 0;
                 break;
             }
-            else {
-                if (!invalidOption()) {
-                    displayOrderScreen();
-                    return;
-                }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
             }
         }
+
         while (true) {
             System.out.println("""
-            Do you want cheese?
-            1) Yes
-            2) No
-            """);
+                    Do you want cheese?
+                    1) Yes
+                    2) No
+                    """);
 
             System.out.print("Choose an option: ");
             int choice = input.nextInt();
             input.nextLine();
 
             if (choice == 1) {
-
-                if (sandwichInch == 4) {
-                    cheesePrice = 0.75;
-                }
-                else if (sandwichInch == 8) {
-                    cheesePrice = 1.50;
-                }
-                else {
-                    cheesePrice = 2.25;
-                }
+                cheesePrice = getCheesePriceBySize();
 
                 while (true) {
                     System.out.println("""
-                    Select cheese:
-                    1) American
-                    2) Provolone
-                    3) Cheddar
-                    4) Swiss
-                    """);
+                            Select cheese:
+                            1) American
+                            2) Provolone
+                            3) Cheddar
+                            4) Swiss
+                            """);
 
                     System.out.print("Choose an option: ");
                     int cheeseChoice = input.nextInt();
@@ -329,71 +298,52 @@ public class UserInterface {
                         cheeseName = "Swiss";
                         break;
                     }
-                    else {
-                        if (!invalidOption()) {
-                            return;
-                        }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
                     }
                 }
 
                 while (true) {
                     System.out.println("""
-                    Do you want extra cheese?
-                    1) Yes
-                    2) No
-                    """);
+                            Do you want extra cheese?
+                            1) Yes
+                            2) No
+                            """);
 
                     System.out.print("Choose an option: ");
                     int extraChoice = input.nextInt();
                     input.nextLine();
 
                     if (extraChoice == 1) {
-
-                        if (sandwichInch == 4) {
-                            extraCheesePrice = 0.30;
-                        }
-                        else if (sandwichInch == 8) {
-                            extraCheesePrice = 0.60;
-                        }
-                        else {
-                            extraCheesePrice = 0.90;
-                        }
-
+                        extraCheesePrice = getExtraCheesePriceBySize();
                         break;
                     }
                     else if (extraChoice == 2) {
                         extraCheesePrice = 0;
                         break;
                     }
-                    else {
-                        if (!invalidOption()) {
-                            return;
-                        }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
                     }
                 }
 
                 break;
             }
-
             else if (choice == 2) {
-                cheeseName = "No Cheese";
-                cheesePrice = 0;
-                extraCheesePrice = 0;
                 break;
             }
-
-            else {
-                if (!invalidOption()) {
-                    return;
-                }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
             }
         }
 
-        double totalPrice = price + meatPrice + extraMeatPrice;
+        double totalPrice = price + meatPrice + extraMeatPrice + cheesePrice + extraCheesePrice;
 
-        System.out.println("Sandwich selected: " + sandwichInch + "\" " + breadType);
-        System.out.println("Meat: " + meatName);
-        System.out.println("Total sandwich price: $" + totalPrice);
+        Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
+        currentOrder.addSandwich(sandwich);
 
         displayOrderScreen();
     }
@@ -419,5 +369,53 @@ public class UserInterface {
         input.nextLine();
 
         return choice == 1;
+    }
+
+    public double getMeatPriceBySize() {
+        if (sandwichInch == 4) {
+            return 1.00;
+        }
+        else if (sandwichInch == 8) {
+            return 2.00;
+        }
+        else {
+            return 3.00;
+        }
+    }
+
+    public double getExtraMeatPriceBySize() {
+        if (sandwichInch == 4) {
+            return 0.50;
+        }
+        else if (sandwichInch == 8) {
+            return 1.00;
+        }
+        else {
+            return 1.50;
+        }
+    }
+
+    public double getCheesePriceBySize() {
+        if (sandwichInch == 4) {
+            return 0.75;
+        }
+        else if (sandwichInch == 8) {
+            return 1.50;
+        }
+        else {
+            return 2.25;
+        }
+    }
+
+    public double getExtraCheesePriceBySize() {
+        if (sandwichInch == 4) {
+            return 0.30;
+        }
+        else if (sandwichInch == 8) {
+            return 0.60;
+        }
+        else {
+            return 0.90;
+        }
     }
 }
