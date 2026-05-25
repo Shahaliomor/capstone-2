@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 
-public class Sandwich {
+public class Sandwich implements PriceItem {
     private int size;
     private String bread;
     private boolean toasted = false;
@@ -22,5 +22,10 @@ public class Sandwich {
         this.toasted = toasted;
         this.sandwiches = new ArrayList<Sandwich>();
 
+    }
+
+    public double getPrice() {
+        double price = 0;
+        return price;
     }
 }
