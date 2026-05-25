@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -12,8 +11,6 @@ public class UserInterface {
     private String meatName;
     private double meatPrice;
     private double extraMeatPrice;
-    private ArrayList<Sandwich> sandwiches;
-    private ArrayList<Sandwich> sandwiches;
 
     public static Scanner input = new Scanner(System.in);
 
@@ -82,6 +79,10 @@ public class UserInterface {
     }
 
     public void addSandwich() {
+        meatName = "No meat";
+        meatPrice = 0;
+        extraMeatPrice = 0;
+
         while (true) {
             System.out.println("""
                     Select your bread:
@@ -112,15 +113,13 @@ public class UserInterface {
                 break;
             }
             else {
-                if (invalidOption()) {
-                    continue;
-                }
-                else {
+                if (!invalidOption()) {
                     displayOrderScreen();
                     return;
                 }
             }
         }
+
         while (true) {
             System.out.println("""
                     Sandwich size:
@@ -135,92 +134,153 @@ public class UserInterface {
 
             if (choice == 1) {
                 sandwichInch = 4;
-                price=5.5;
+                price = 5.50;
                 break;
             }
             else if (choice == 2) {
                 sandwichInch = 8;
-                price=7;
+                price = 7.00;
                 break;
             }
             else if (choice == 3) {
                 sandwichInch = 12;
-                price=8.5;
+                price = 8.50;
                 break;
             }
             else {
-                if (invalidOption()) {
-                    continue;
-                }
-                else {
+                if (!invalidOption()) {
                     displayOrderScreen();
                     return;
                 }
             }
         }
+
         while (true) {
             System.out.println("""
                     Do you want meat?
                     1) Yes
                     2) No
                     """);
+
             System.out.print("Choose an option: ");
             int choice = input.nextInt();
+            input.nextLine();
+
             if (choice == 1) {
-                if(sandwichInch == 4) {
-                    meatPrice = 1;
+                if (sandwichInch == 4) {
+                    meatPrice = 1.00;
                 }
-                else if(sandwichInch == 8) {
-                    meatPrice = 2;
+                else if (sandwichInch == 8) {
+                    meatPrice = 2.00;
                 }
                 else {
-                    meatPrice = 3;
+                    meatPrice = 3.00;
                 }
-                System.out.println("Please select one:");
-                System.out.println("""
-                        Select meat:
-                        1) Steak
-                        2) Ham
-                        3) Salami
-                        4) Roast Beef
-                        5) Chicken
-                        6) Bacon
-                        """);
-                int choice2 = input.nextInt();
-                input.nextLine();
-                if (choice2 == 1) {
-                    meatName="Steak";
-                    break;
+
+                while (true) {
+                    System.out.println("""
+                            Select meat:
+                            1) Steak
+                            2) Ham
+                            3) Salami
+                            4) Roast Beef
+                            5) Chicken
+                            6) Bacon
+                            """);
+
+                    System.out.print("Choose an option: ");
+                    int meatChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (meatChoice == 1) {
+                        meatName = "Steak";
+                        break;
+                    }
+                    else if (meatChoice == 2) {
+                        meatName = "Ham";
+                        break;
+                    }
+                    else if (meatChoice == 3) {
+                        meatName = "Salami";
+                        break;
+                    }
+                    else if (meatChoice == 4) {
+                        meatName = "Roast Beef";
+                        break;
+                    }
+                    else if (meatChoice == 5) {
+                        meatName = "Chicken";
+                        break;
+                    }
+                    else if (meatChoice == 6) {
+                        meatName = "Bacon";
+                        break;
+                    }
+                    else {
+                        if (!invalidOption()) {
+                            displayOrderScreen();
+                            return;
+                        }
+                    }
                 }
-                else if (choice2 == 2) {
-                    meatName="Ham";
-                    break;
+
+                while (true) {
+                    System.out.println("""
+                            Do you want extra meat?
+                            1) Yes
+                            2) No
+                            """);
+
+                    System.out.print("Choose an option: ");
+                    int extraChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (extraChoice == 1) {
+                        if (sandwichInch == 4) {
+                            extraMeatPrice = 0.50;
+                        }
+                        else if (sandwichInch == 8) {
+                            extraMeatPrice = 1.00;
+                        }
+                        else {
+                            extraMeatPrice = 1.50;
+                        }
+                        break;
+                    }
+                    else if (extraChoice == 2) {
+                        extraMeatPrice = 0;
+                        break;
+                    }
+                    else {
+                        if (!invalidOption()) {
+                            displayOrderScreen();
+                            return;
+                        }
+                    }
                 }
-                else if (choice2 == 3) {
-                    meatName="Salami";
-                    break;
-                }
-                else if (choice2 == 4) {
-                    meatName="Roast Beef";
-                    break;
-                }
-                else if (choice2 == 5) {
-                    meatName="Chicken";
-                    break;
-                }
-                else if (choice2 == 6) {
-                    meatName="Bacon";
-                    break;
-                }
-            }
-            else if (choice == 2) {
-                meatPrice=0;
+
                 break;
             }
-
+            else if (choice == 2) {
+                meatName = "No meat";
+                meatPrice = 0;
+                extraMeatPrice = 0;
+                break;
+            }
+            else {
+                if (!invalidOption()) {
+                    displayOrderScreen();
+                    return;
+                }
+            }
         }
 
-        System.out.println("Sandwich selected: " + sandwichInch + "\" " + breadType+"price: "+price);
+        double totalPrice = price + meatPrice + extraMeatPrice;
+
+        System.out.println("Sandwich selected: " + sandwichInch + "\" " + breadType);
+        System.out.println("Meat: " + meatName);
+        System.out.println("Total sandwich price: $" + totalPrice);
+
         displayOrderScreen();
     }
 
