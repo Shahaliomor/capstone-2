@@ -7,6 +7,7 @@ public class UserInterface {
     private String breadType;
     private Order currentOrder;
     private String name;
+    private double price;
 
     public static Scanner input = new Scanner(System.in);
 
@@ -77,42 +78,7 @@ public class UserInterface {
     public void addSandwich() {
         while (true) {
             System.out.println("""
-                    How many inch sandwich do you want to add?
-                    1) 4"
-                    2) 8"
-                    3) 12"
-                    """);
-
-            System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
-
-            if (choice == 1) {
-                sandwichInch = 4;
-                break;
-            }
-            else if (choice == 2) {
-                sandwichInch = 8;
-                break;
-            }
-            else if (choice == 3) {
-                sandwichInch = 12;
-                break;
-            }
-            else {
-                if (invalidOption()) {
-                    continue;
-                }
-                else {
-                    displayOrderScreen();
-                    return;
-                }
-            }
-        }
-
-        while (true) {
-            System.out.println("""
-                    What kind of bread do you like?
+                    Select your bread:
                     1) White
                     2) Wheat
                     3) Rye
@@ -149,8 +115,45 @@ public class UserInterface {
                 }
             }
         }
+        while (true) {
+            System.out.println("""
+                    Sandwich size:
+                    1) 4"
+                    2) 8"
+                    3) 12"
+                    """);
 
-        System.out.println("Sandwich selected: " + sandwichInch + "\" " + breadType);
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+                sandwichInch = 4;
+                price=5.5;
+                break;
+            }
+            else if (choice == 2) {
+                sandwichInch = 8;
+                price=7;
+                break;
+            }
+            else if (choice == 3) {
+                sandwichInch = 12;
+                price=8.5;
+                break;
+            }
+            else {
+                if (invalidOption()) {
+                    continue;
+                }
+                else {
+                    displayOrderScreen();
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Sandwich selected: " + sandwichInch + "\" " + breadType+"price: "+price);
         displayOrderScreen();
     }
 
