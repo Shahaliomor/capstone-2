@@ -3,7 +3,9 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class UserInterface {
+    private int sandwichInch;
     private Order currentOrder;
+    private String name;
     public static Scanner input = new Scanner(System.in);
     // Display the home screen menu
     public void displayHomeScreen(){
@@ -16,7 +18,7 @@ public class UserInterface {
         input.nextLine();
         if(choice == 1){
             System.out.print("Can I have your name please: ");
-            String name = input.nextLine();
+            name = input.nextLine();
 
             currentOrder = new Order(name);
 
@@ -29,7 +31,7 @@ public class UserInterface {
             return;
         }
         else{
-            System.out.println("Invalid choice. Try again.");
+            System.out.println("Invalid choice "+ name+", try again.");
             displayHomeScreen();
         }
 
@@ -64,13 +66,54 @@ public class UserInterface {
             displayHomeScreen();
         }
         else {
-            System.out.println("Invalid choice. Try again.");
+            System.out.println("Invalid choice "+ name+", try again.");
             displayOrderScreen();
         }
 
     }
     // Add sandwich to current order
     public void addSandwich(){
+        while(true){
+            System.out.print("""
+                        How many Inch Sandwich you want to add: 
+                            1) 4"
+                            2) 8"
+                            3) 12"
+                        """);
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            if (choice == 1) {
+                sandwichInch = 4;
+            }
+            else if (choice == 2) {
+                sandwichInch = 8;
+            }
+            else if (choice == 3) {
+                sandwichInch = 12;
+            }
+            else {
+                System.out.println("Invalid choice "+ name+". DO you want to try again?");
+                System.out.println("""
+                    1) Yes
+                    2) No
+                    Choose 1 or 2: 
+                    """);
+                int  choice2 = input.nextInt();
+                input.nextLine();
+                if (choice2 == 1) {
+                    continue;
+                }
+                else if (choice2 == 2) {
+                    break;
+                }
+                else {
+                    System.out.println("Invalid choice "+ name);
+                    return;
+                }
+            }
+        }
+
+
     }
     // Add drink to current order
     public void addDrink(){}
