@@ -1,4 +1,15 @@
 package com.pluralsight;
 
-public class Topping {
+public abstract class Topping {
+    String name;
+    public Topping(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+
+
+
+
 }
