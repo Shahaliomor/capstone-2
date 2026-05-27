@@ -8,9 +8,8 @@ public class UserInterface {
     private Order currentOrder;
     private Meat meat;
     private Cheese cheese;
-    private Sandwich sandwich;
     private String name;
-    private double price;
+
     private String meatName;
     private double meatPrice;
     private double extraMeatPrice;
@@ -128,11 +127,11 @@ public class UserInterface {
 
         while (true) {
             System.out.println("""
-                    Sandwich size:
-                    1) 4"
-                    2) 8"
-                    3) 12"
-                    """);
+            Sandwich size:
+            1) 4"
+            2) 8"
+            3) 12"
+            """);
 
             System.out.print("Choose an option: ");
             int choice = input.nextInt();
@@ -140,17 +139,14 @@ public class UserInterface {
 
             if (choice == 1) {
                 sandwichInch = 4;
-                price = 5.50;
                 break;
             }
             else if (choice == 2) {
                 sandwichInch = 8;
-                price = 7.00;
                 break;
             }
             else if (choice == 3) {
                 sandwichInch = 12;
-                price = 8.50;
                 break;
             }
             else if (!invalidOption()) {
@@ -333,6 +329,7 @@ public class UserInterface {
                         );
 
                         sandwich.addTopping(extraCheese);
+                        break;
                     }
                     else if (extraChoice == 2) {
                         extraCheesePrice = 0;
