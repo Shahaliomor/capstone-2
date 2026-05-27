@@ -353,10 +353,6 @@ public class UserInterface {
                 return;
             }
         }
-
-        double totalPrice = price + meatPrice + extraMeatPrice + cheesePrice + extraCheesePrice;
-
-
         currentOrder.addSandwich(sandwich);
 
         displayOrderScreen();
