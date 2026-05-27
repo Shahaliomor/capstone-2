@@ -326,7 +326,13 @@ public class UserInterface {
 
                     if (extraChoice == 1) {
                         extraCheesePrice = getExtraCheesePriceBySize();
-                        break;
+
+                        Cheese extraCheese = new Cheese(
+                                "Extra " + cheeseName,
+                                extraCheesePrice
+                        );
+
+                        sandwich.addTopping(extraCheese);
                     }
                     else if (extraChoice == 2) {
                         extraCheesePrice = 0;
