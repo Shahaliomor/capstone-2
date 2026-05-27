@@ -72,25 +72,15 @@ public class UserInterface {
     }
 
     public void addSandwich() {
-
-
-        String meatName = "No meat";
-        double meatPrice = 0;
-        double extraMeatPrice = 0;
-
-        String cheeseName = "No Cheese";
-        double cheesePrice = 0;
-        double extraCheesePrice = 0;
-
+        // Build sandwich step-by-step by calling methods in order:
         String breadType = getBreadType();
-        int sandwichInch = getSandwichSize();
+        sandwichInch = getSandwichSize();
         Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
         addMeat(sandwich);
         addCheese(sandwich);
         addRegularToppings(sandwich);
         currentOrder.addSandwich(sandwich);
         displayOrderScreen();
-        addRegularToppings(sandwich);
     }
 
     public void addDrink() {
@@ -225,7 +215,7 @@ public class UserInterface {
         }
     }
     public void addMeat(Sandwich sandwich) {
-        String meatName = "";
+        String meatName="No meat";
         double meatPrice = 0;
         double extraMeatPrice = 0;
 
