@@ -6,18 +6,17 @@ public class UserInterface {
     private int sandwichInch;
     private String breadType;
     private Order currentOrder;
+    private Meat meat;
+    private Cheese cheese;
+    private Sandwich sandwich;
     private String name;
-
     private double price;
-
     private String meatName;
     private double meatPrice;
     private double extraMeatPrice;
-
     private String cheeseName;
     private double cheesePrice;
     private double extraCheesePrice;
-
     public static Scanner input = new Scanner(System.in);
 
     public void displayHomeScreen() {
@@ -159,7 +158,7 @@ public class UserInterface {
                 return;
             }
         }
-
+        Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
         while (true) {
             System.out.println("""
                     Do you want meat?
@@ -191,32 +190,33 @@ public class UserInterface {
 
                     if (meatChoice == 1) {
                         meatName = "Steak";
-                        break;
                     }
                     else if (meatChoice == 2) {
                         meatName = "Ham";
-                        break;
                     }
                     else if (meatChoice == 3) {
                         meatName = "Salami";
-                        break;
                     }
                     else if (meatChoice == 4) {
                         meatName = "Roast Beef";
-                        break;
                     }
                     else if (meatChoice == 5) {
                         meatName = "Chicken";
-                        break;
                     }
                     else if (meatChoice == 6) {
                         meatName = "Bacon";
-                        break;
                     }
                     else if (!invalidOption()) {
                         displayOrderScreen();
                         return;
                     }
+                    else {
+                        continue;
+                    }
+
+                    meat = new Meat(meatName, meatPrice);
+                    sandwich.addTopping(meat);
+                    break;
                 }
 
                 while (true) {
@@ -232,6 +232,14 @@ public class UserInterface {
 
                     if (extraChoice == 1) {
                         extraMeatPrice = getExtraMeatPriceBySize();
+
+                        Meat extraMeat = new Meat(
+                                "Extra " + meatName,
+                                extraMeatPrice
+                        );
+
+                        sandwich.addTopping(extraMeat);
+
                         break;
                     }
                     else if (extraChoice == 2) {
@@ -288,20 +296,20 @@ public class UserInterface {
                     }
                     else if (cheeseChoice == 2) {
                         cheeseName = "Provolone";
-                        break;
                     }
                     else if (cheeseChoice == 3) {
                         cheeseName = "Cheddar";
-                        break;
                     }
                     else if (cheeseChoice == 4) {
                         cheeseName = "Swiss";
-                        break;
                     }
                     else if (!invalidOption()) {
                         displayOrderScreen();
                         return;
                     }
+
+                    cheese = new Cheese(cheeseName, cheesePrice);
+                    break;
                 }
 
                 while (true) {
@@ -341,7 +349,7 @@ public class UserInterface {
 
         double totalPrice = price + meatPrice + extraMeatPrice + cheesePrice + extraCheesePrice;
 
-        Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
+
         currentOrder.addSandwich(sandwich);
 
         displayOrderScreen();
