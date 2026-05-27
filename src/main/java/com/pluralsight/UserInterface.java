@@ -82,270 +82,15 @@ public class UserInterface {
         double cheesePrice = 0;
         double extraCheesePrice = 0;
 
-        String breadType;
-        while (true) {
-            System.out.println("""
-                    Select your bread:
-                    1) White
-                    2) Wheat
-                    3) Rye
-                    4) Wrap
-                    """);
-
-            System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
-
-            if (choice == 1) {
-                breadType = "White";
-                break;
-            }
-            else if (choice == 2) {
-                breadType = "Wheat";
-                break;
-            }
-            else if (choice == 3) {
-                breadType = "Rye";
-                break;
-            }
-            else if (choice == 4) {
-                breadType = "Wrap";
-                break;
-            }
-            else if (!invalidOption()) {
-                displayOrderScreen();
-                return;
-            }
-        }
-
-        while (true) {
-            System.out.println("""
-            Sandwich size:
-            1) 4"
-            2) 8"
-            3) 12"
-            """);
-
-            System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
-
-            if (choice == 1) {
-                sandwichInch = 4;
-                break;
-            }
-            else if (choice == 2) {
-                sandwichInch = 8;
-                break;
-            }
-            else if (choice == 3) {
-                sandwichInch = 12;
-                break;
-            }
-            else if (!invalidOption()) {
-                displayOrderScreen();
-                return;
-            }
-        }
+        String breadType = getBreadType();
+        int sandwichInch = getSandwichSize();
         Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
-        while (true) {
-            System.out.println("""
-                    Do you want meat?
-                    1) Yes
-                    2) No
-                    """);
-
-            System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
-
-            if (choice == 1) {
-                meatPrice = getMeatPriceBySize();
-
-                while (true) {
-                    System.out.println("""
-                            Select meat:
-                            1) Steak
-                            2) Ham
-                            3) Salami
-                            4) Roast Beef
-                            5) Chicken
-                            6) Bacon
-                            """);
-
-                    System.out.print("Choose an option: ");
-                    int meatChoice = input.nextInt();
-                    input.nextLine();
-
-                    if (meatChoice == 1) {
-                        meatName = "Steak";
-                    }
-                    else if (meatChoice == 2) {
-                        meatName = "Ham";
-                    }
-                    else if (meatChoice == 3) {
-                        meatName = "Salami";
-                    }
-                    else if (meatChoice == 4) {
-                        meatName = "Roast Beef";
-                    }
-                    else if (meatChoice == 5) {
-                        meatName = "Chicken";
-                    }
-                    else if (meatChoice == 6) {
-                        meatName = "Bacon";
-                    }
-                    else if (!invalidOption()) {
-                        displayOrderScreen();
-                        return;
-                    }
-                    else {
-                        continue;
-                    }
-
-                    Meat meat = new Meat(meatName, meatPrice);
-                    sandwich.addTopping(meat);
-                    break;
-                }
-
-                while (true) {
-                    System.out.println("""
-                            Do you want extra meat?
-                            1) Yes
-                            2) No
-                            """);
-
-                    System.out.print("Choose an option: ");
-                    int extraChoice = input.nextInt();
-                    input.nextLine();
-
-                    if (extraChoice == 1) {
-                        extraMeatPrice = getExtraMeatPriceBySize();
-
-                        Meat extraMeat = new Meat(
-                                "Extra " + meatName,
-                                extraMeatPrice
-                        );
-
-                        sandwich.addTopping(extraMeat);
-
-                        break;
-                    }
-                    else if (extraChoice == 2) {
-                        extraMeatPrice = 0;
-                        break;
-                    }
-                    else if (!invalidOption()) {
-                        displayOrderScreen();
-                        return;
-                    }
-                }
-
-                break;
-            }
-            else if (choice == 2) {
-                break;
-            }
-            else if (!invalidOption()) {
-                displayOrderScreen();
-                return;
-            }
-        }
-
-        while (true) {
-            System.out.println("""
-                    Do you want cheese?
-                    1) Yes
-                    2) No
-                    """);
-
-            System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
-
-            if (choice == 1) {
-                cheesePrice = getCheesePriceBySize();
-
-                while (true) {
-                    System.out.println("""
-                            Select cheese:
-                            1) American
-                            2) Provolone
-                            3) Cheddar
-                            4) Swiss
-                            """);
-
-                    System.out.print("Choose an option: ");
-                    int cheeseChoice = input.nextInt();
-                    input.nextLine();
-
-                    if (cheeseChoice == 1) {
-                        cheeseName = "American";
-                    }
-                    else if (cheeseChoice == 2) {
-                        cheeseName = "Provolone";
-                    }
-                    else if (cheeseChoice == 3) {
-                        cheeseName = "Cheddar";
-                    }
-                    else if (cheeseChoice == 4) {
-                        cheeseName = "Swiss";
-                    }
-                    else if (!invalidOption()) {
-                        displayOrderScreen();
-                        return;
-                    }
-
-                    Cheese cheese = new Cheese(cheeseName, cheesePrice);
-                    sandwich.addTopping(cheese);
-
-                    break;
-                }
-
-                while (true) {
-                    System.out.println("""
-                            Do you want extra cheese?
-                            1) Yes
-                            2) No
-                            """);
-
-                    System.out.print("Choose an option: ");
-                    int extraChoice = input.nextInt();
-                    input.nextLine();
-
-                    if (extraChoice == 1) {
-                        extraCheesePrice = getExtraCheesePriceBySize();
-
-                        Cheese extraCheese = new Cheese(
-                                "Extra " + cheeseName,
-                                extraCheesePrice
-                        );
-
-                        sandwich.addTopping(extraCheese);
-                        break;
-                    }
-                    else if (extraChoice == 2) {
-                        extraCheesePrice = 0;
-                        break;
-                    }
-                    else if (!invalidOption()) {
-                        displayOrderScreen();
-                        return;
-                    }
-                }
-                break;
-            }
-            else if (choice == 2) {
-                break;
-            }
-            else if (!invalidOption()) {
-                displayOrderScreen();
-                return;
-            }
-        }
+        addMeat(sandwich);
+        addCheese(sandwich);
+        addRegularToppings(sandwich);
         currentOrder.addSandwich(sandwich);
-
         displayOrderScreen();
+        addRegularToppings(sandwich);
     }
 
     public void addDrink() {
@@ -416,6 +161,361 @@ public class UserInterface {
         }
         else {
             return 0.90;
+        }
+    }
+    public String getBreadType() {
+        while (true) {
+            System.out.println("""
+                Select your bread:
+                1) White
+                2) Wheat
+                3) Rye
+                4) Wrap
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+                return "White";
+            }
+            else if (choice == 2) {
+                return "Wheat";
+            }
+            else if (choice == 3) {
+                return "Rye";
+            }
+            else if (choice == 4) {
+                return "Wrap";
+            }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return "";
+            }
+        }
+    }
+
+    public int getSandwichSize() {
+        while (true) {
+            System.out.println("""
+                Sandwich size:
+                1) 4"
+                2) 8"
+                3) 12"
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+                return 4;
+            }
+            else if (choice == 2) {
+                return 8;
+            }
+            else if (choice == 3) {
+                return 12;
+            }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return 0;
+            }
+        }
+    }
+    public void addMeat(Sandwich sandwich) {
+        String meatName = "";
+        double meatPrice = 0;
+        double extraMeatPrice = 0;
+
+        while (true) {
+            System.out.println("""
+                Do you want meat?
+                1) Yes
+                2) No
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+                meatPrice = getMeatPriceBySize();
+
+                while (true) {
+                    System.out.println("""
+                        Select meat:
+                        1) Steak
+                        2) Ham
+                        3) Salami
+                        4) Roast Beef
+                        5) Chicken
+                        6) Bacon
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int meatChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (meatChoice == 1) {
+                        meatName = "Steak";
+                    }
+                    else if (meatChoice == 2) {
+                        meatName = "Ham";
+                    }
+                    else if (meatChoice == 3) {
+                        meatName = "Salami";
+                    }
+                    else if (meatChoice == 4) {
+                        meatName = "Roast Beef";
+                    }
+                    else if (meatChoice == 5) {
+                        meatName = "Chicken";
+                    }
+                    else if (meatChoice == 6) {
+                        meatName = "Bacon";
+                    }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
+                    }
+                    else {
+                        continue;
+                    }
+
+                    Meat meat = new Meat(meatName, meatPrice);
+                    sandwich.addTopping(meat);
+
+                    break;
+                }
+
+                while (true) {
+                    System.out.println("""
+                        Do you want extra meat?
+                        1) Yes
+                        2) No
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int extraChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (extraChoice == 1) {
+                        extraMeatPrice = getExtraMeatPriceBySize();
+
+                        Meat extraMeat = new Meat(
+                                "Extra " + meatName,
+                                extraMeatPrice
+                        );
+
+                        sandwich.addTopping(extraMeat);
+
+                        break;
+                    }
+                    else if (extraChoice == 2) {
+                        break;
+                    }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
+                    }
+                }
+
+                break;
+            }
+            else if (choice == 2) {
+                break;
+            }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
+            }
+        }
+    }
+    public void addCheese(Sandwich sandwich) {
+        String cheeseName = "";
+        double cheesePrice = 0;
+        double extraCheesePrice = 0;
+
+        while (true) {
+            System.out.println("""
+                Do you want cheese?
+                1) Yes
+                2) No
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+                cheesePrice = getCheesePriceBySize();
+
+                while (true) {
+                    System.out.println("""
+                        Select cheese:
+                        1) American
+                        2) Provolone
+                        3) Cheddar
+                        4) Swiss
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int cheeseChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (cheeseChoice == 1) {
+                        cheeseName = "American";
+                    }
+                    else if (cheeseChoice == 2) {
+                        cheeseName = "Provolone";
+                    }
+                    else if (cheeseChoice == 3) {
+                        cheeseName = "Cheddar";
+                    }
+                    else if (cheeseChoice == 4) {
+                        cheeseName = "Swiss";
+                    }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
+                    }
+                    else {
+                        continue;
+                    }
+
+                    Cheese cheese = new Cheese(cheeseName, cheesePrice);
+                    sandwich.addTopping(cheese);
+
+                    break;
+                }
+
+                while (true) {
+                    System.out.println("""
+                        Do you want extra cheese?
+                        1) Yes
+                        2) No
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int extraChoice = input.nextInt();
+                    input.nextLine();
+
+                    if (extraChoice == 1) {
+                        extraCheesePrice = getExtraCheesePriceBySize();
+
+                        Cheese extraCheese = new Cheese(
+                                "Extra " + cheeseName,
+                                extraCheesePrice
+                        );
+
+                        sandwich.addTopping(extraCheese);
+                        break;
+                    }
+                    else if (extraChoice == 2) {
+                        break;
+                    }
+                    else if (!invalidOption()) {
+                        displayOrderScreen();
+                        return;
+                    }
+                }
+
+                break;
+            }
+            else if (choice == 2) {
+                break;
+            }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
+            }
+        }
+    }
+    public void addRegularToppings(Sandwich sandwich){
+
+        while (true) {
+            System.out.println("""
+                Do you want regular toppings?
+                1) Yes
+                2) No
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+
+                while (true) {
+
+                    System.out.println("""
+                        Select topping:
+                        1) Lettuce
+                        2) Peppers
+                        3) Onions
+                        4) Tomatoes
+                        5) Jalapenos
+                        6) Cucumbers
+                        7) Pickles
+                        8) Guacamole
+                        9) Mushrooms
+                        0) Done
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int toppingChoice = input.nextInt();
+                    input.nextLine();
+
+                    String toppingName="";
+
+                    if (toppingChoice == 1) {
+                        toppingName = "Lettuce";
+                    }
+                    else if (toppingChoice == 2) {
+                        toppingName = "Peppers";
+                    }
+                    else if (toppingChoice == 3) {
+                        toppingName = "Onions";
+                    }
+                    else if (toppingChoice == 4) {
+                        toppingName = "Tomatoes";
+                    }
+                    else if (toppingChoice == 5) {
+                        toppingName = "Jalapenos";
+                    }
+                    else if (toppingChoice == 6) {
+                        toppingName = "Cucumbers";
+                    }
+                    else if (toppingChoice == 7) {
+                        toppingName = "Pickles";
+                    }
+                    else if (toppingChoice == 8) {
+                        toppingName = "Guacamole";
+                    }
+                    else if (toppingChoice == 9) {
+                        toppingName = "Mushrooms";
+                    }
+                    else if (toppingChoice == 0) {
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+                    RegularTopping topping = new RegularTopping(toppingName);
+                    sandwich.addTopping(topping);
+                }
+                break;
+            }
+            else if(choice==2){
+                break;
+            }
+
+            else if(!invalidOption()){
+                displayOrderScreen();
+                return;
+            }
         }
     }
 }
