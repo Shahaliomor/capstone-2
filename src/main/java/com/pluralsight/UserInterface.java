@@ -292,7 +292,6 @@ public class UserInterface {
 
                     if (cheeseChoice == 1) {
                         cheeseName = "American";
-                        break;
                     }
                     else if (cheeseChoice == 2) {
                         cheeseName = "Provolone";
@@ -309,6 +308,8 @@ public class UserInterface {
                     }
 
                     cheese = new Cheese(cheeseName, cheesePrice);
+                    sandwich.addTopping(cheese);
+
                     break;
                 }
 
