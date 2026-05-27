@@ -8,6 +8,7 @@ public class UserInterface {
     private String name;
     public static Scanner input = new Scanner(System.in);
 
+
     public void displayHomeScreen() {
         System.out.println("""
                 1) New Order
@@ -79,6 +80,8 @@ public class UserInterface {
         addMeat(sandwich);
         addCheese(sandwich);
         addRegularToppings(sandwich);
+        addSauces(sandwich);
+        askToasted(sandwich);
         currentOrder.addSandwich(sandwich);
         displayOrderScreen();
     }
@@ -508,4 +511,96 @@ public class UserInterface {
             }
         }
     }
+    public void addSauces(Sandwich sandwich){
+
+        while (true) {
+            System.out.println("""
+                Do you want sauces?
+                1) Yes
+                2) No
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+
+                while (true) {
+
+                    System.out.println("""
+                        Select sauce:
+                        1) Mayo
+                        2) Mustard
+                        3) Ketchup
+                        4) Ranch
+                        5) Thousand Islands
+                        6) Vinaigrette
+                        0) Done
+                        """);
+
+                    System.out.print("Choose an option: ");
+                    int sauceChoice = input.nextInt();
+                    input.nextLine();
+
+                    String sauceName = "";
+
+                    if (sauceChoice == 1) {
+                        sauceName = "Mayo";
+                    }
+                    else if (sauceChoice == 2) {
+                        sauceName = "Mustard";
+                    }
+                    else if (sauceChoice == 3) {
+                        sauceName = "Ketchup";
+                    }
+                    else if (sauceChoice == 4) {
+                        sauceName = "Ranch";
+                    }
+                    else if (sauceChoice == 5) {
+                        sauceName = "Thousand Islands";
+                    }
+                    else if (sauceChoice == 6) {
+                        sauceName = "Vinaigrette";
+                    }
+                    else if (sauceChoice == 0) {
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+
+                    Sauce sauce = new Sauce(sauceName);
+
+                    sandwich.addTopping(sauce);
+
+                }
+
+                break;
+            }
+            else if (choice == 2){
+                break;
+            }
+            else if (!invalidOption()){
+                displayOrderScreen();
+                return;
+            }
+        }
+    }
+    public void askToasted(Sandwich sandwich){
+
+        System.out.println("""
+            Would you like the sandwich toasted?
+            1) Yes
+            2) No
+            """);
+
+        int choice = input.nextInt();
+        input.nextLine();
+
+        if(choice == 1){
+            sandwich.setToasted(true);
+        }
+    }
+
 }

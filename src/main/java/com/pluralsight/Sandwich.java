@@ -14,7 +14,9 @@ public class Sandwich implements PriceItem {
         this.toasted = toasted;
         this.toppings = new ArrayList<>();
     }
-
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
+    }
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
