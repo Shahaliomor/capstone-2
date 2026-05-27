@@ -138,7 +138,7 @@ public class UserInterface {
             return 1.50;
         }
         else {
-            return 2.25;
+            return 2.25 ;
         }
     }
 
