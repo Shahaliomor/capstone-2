@@ -4,18 +4,8 @@ import java.util.Scanner;
 
 public class UserInterface {
     private int sandwichInch;
-    private String breadType;
     private Order currentOrder;
-    private Meat meat;
-    private Cheese cheese;
     private String name;
-
-    private String meatName;
-    private double meatPrice;
-    private double extraMeatPrice;
-    private String cheeseName;
-    private double cheesePrice;
-    private double extraCheesePrice;
     public static Scanner input = new Scanner(System.in);
 
     public void displayHomeScreen() {
@@ -82,14 +72,17 @@ public class UserInterface {
     }
 
     public void addSandwich() {
-        meatName = "No meat";
-        meatPrice = 0;
-        extraMeatPrice = 0;
 
-        cheeseName = "No Cheese";
-        cheesePrice = 0;
-        extraCheesePrice = 0;
 
+        String meatName = "No meat";
+        double meatPrice = 0;
+        double extraMeatPrice = 0;
+
+        String cheeseName = "No Cheese";
+        double cheesePrice = 0;
+        double extraCheesePrice = 0;
+
+        String breadType;
         while (true) {
             System.out.println("""
                     Select your bread:
@@ -210,7 +203,7 @@ public class UserInterface {
                         continue;
                     }
 
-                    meat = new Meat(meatName, meatPrice);
+                    Meat meat = new Meat(meatName, meatPrice);
                     sandwich.addTopping(meat);
                     break;
                 }
@@ -303,7 +296,7 @@ public class UserInterface {
                         return;
                     }
 
-                    cheese = new Cheese(cheeseName, cheesePrice);
+                    Cheese cheese = new Cheese(cheeseName, cheesePrice);
                     sandwich.addTopping(cheese);
 
                     break;
