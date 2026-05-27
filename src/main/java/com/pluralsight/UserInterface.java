@@ -328,7 +328,6 @@ public class UserInterface {
                         return;
                     }
                 }
-
                 break;
             }
             else if (choice == 2) {

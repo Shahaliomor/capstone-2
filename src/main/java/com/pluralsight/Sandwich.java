@@ -41,11 +41,9 @@ public class Sandwich implements PriceItem {
 
         if (size == 4) {
             price = 5.50;
-        }
-        else if (size == 8) {
+        } else if (size == 8) {
             price = 7.00;
-        }
-        else if (size == 12) {
+        } else if (size == 12) {
             price = 8.50;
         }
 
