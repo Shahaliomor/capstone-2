@@ -603,4 +603,47 @@ public class UserInterface {
         }
     }
 
+    public void addSides(Sandwich sandwich){
+
+        while (true){
+
+            System.out.println("""
+                Add side?
+                1) Au Jus
+                2) Sauce
+                3) None
+                """);
+
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if(choice == 1){
+
+                sandwich.addTopping(
+                        new Side("Au Jus")
+                );
+
+                break;
+            }
+
+            else if(choice == 2){
+
+                sandwich.addTopping(
+                        new Side("Sauce")
+                );
+
+                break;
+            }
+
+            else if(choice == 3){
+                break;
+            }
+
+            else if(!invalidOption()){
+                displayOrderScreen();
+                return;
+            }
+        }
+    }
+
 }
