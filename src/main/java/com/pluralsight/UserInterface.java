@@ -178,6 +178,92 @@ public class UserInterface {
     }
 
     public void checkout() {
+
+        double totalPrice = 0;
+
+        System.out.println("""
+            ===== CHEESY BURG RECEIPT =====
+            """);
+
+        System.out.println("Customer: " + name);
+        System.out.println();
+
+        for (Sandwich sandwich : currentOrder.getSandwiches()) {
+
+            System.out.println(
+                    sandwich.getSize() + "\" "
+                            + sandwich.getBread()
+                            + " Sandwich"
+            );
+
+            if (sandwich.isToasted()) {
+                System.out.println("Toasted");
+            }
+
+            for (Topping topping : sandwich.getToppings()) {
+
+                System.out.println(
+                        "- " + topping.getName()
+                );
+            }
+
+            System.out.printf(
+                    "Price: $%.2f%n",
+                    sandwich.getPrice()
+            );
+
+            System.out.println();
+
+            totalPrice += sandwich.getPrice();
+        }
+
+        for (Drink drink : currentOrder.getDrinks()) {
+
+            System.out.println(
+                    drink.getSize()
+                            + " Drink"
+            );
+
+            System.out.printf(
+                    "Price: $%.2f%n",
+                    drink.getPrice()
+            );
+
+            System.out.println();
+
+            totalPrice += drink.getPrice();
+        }
+
+        for (Chips chips : currentOrder.getChips()) {
+
+            System.out.println("Chips");
+
+            System.out.printf(
+                    "Price: $%.2f%n",
+                    chips.getPrice()
+            );
+
+            System.out.println();
+
+            totalPrice += chips.getPrice();
+        }
+
+        System.out.printf(
+                "TOTAL: $%.2f%n",
+                totalPrice
+        );
+
+        ReceiptFileManager.saveReceipt(
+                currentOrder
+        );
+
+        System.out.println(
+                "Receipt saved successfully!"
+        );
+
+        currentOrder = null;
+
+        displayHomeScreen();
     }
 
     public boolean invalidOption() {
