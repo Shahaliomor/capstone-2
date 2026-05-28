@@ -82,6 +82,7 @@ public class UserInterface {
         addRegularToppings(sandwich);
         addSauces(sandwich);
         askToasted(sandwich);
+        addSides(sandwich);
         currentOrder.addSandwich(sandwich);
         displayOrderScreen();
     }
