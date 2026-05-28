@@ -141,6 +141,40 @@ public class UserInterface {
     }
 
     public void addChips() {
+        while (true) {
+
+            System.out.println("""
+                Add chips?
+                1) Yes
+                2) No
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 1) {
+
+                Chips chips = new Chips(1.50);
+
+                currentOrder.addChip(chips);
+
+                System.out.println("Chips added!");
+
+                displayOrderScreen();
+                return;
+            }
+
+            else if (choice == 2) {
+                displayOrderScreen();
+                return;
+            }
+
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
+            }
+        }
     }
 
     public void checkout() {
