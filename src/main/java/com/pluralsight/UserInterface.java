@@ -88,6 +88,56 @@ public class UserInterface {
     }
 
     public void addDrink() {
+        while (true) {
+
+            System.out.println("""
+                Select drink size:
+                1) Small
+                2) Medium
+                3) Large
+                0) Cancel
+                """);
+
+            System.out.print("Choose an option: ");
+            int choice = input.nextInt();
+            input.nextLine();
+
+            String size = "";
+            double price = 0;
+
+            if (choice == 1) {
+                size = "Small";
+                price = 2.00;
+            }
+            else if (choice == 2) {
+                size = "Medium";
+                price = 2.50;
+            }
+            else if (choice == 3) {
+                size = "Large";
+                price = 3.00;
+            }
+            else if (choice == 0) {
+                displayOrderScreen();
+                return;
+            }
+            else if (!invalidOption()) {
+                displayOrderScreen();
+                return;
+            }
+            else {
+                continue;
+            }
+
+            Drink drink = new Drink(size, price);
+
+            currentOrder.addDrink(drink);
+
+            System.out.println(size + " drink added!");
+
+            displayOrderScreen();
+            return;
+        }
     }
 
     public void addChips() {
