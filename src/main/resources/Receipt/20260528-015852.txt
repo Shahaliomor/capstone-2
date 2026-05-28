@@ -1,0 +1,17 @@
+CHEESY BURG RECEIPT
+Customer: Omor
+
+Order Details:
+12" Wrap Sandwich
+Toasted
+- Roast Beef
+- Extra Roast Beef
+- Cheddar
+- Extra Cheddar
+- Mushrooms
+- Jalapenos
+- Mayo
+- Ranch
+- Au Jus
+Price: $16.15
+

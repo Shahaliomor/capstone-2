@@ -1,0 +1,16 @@
+CHEESY BURG RECEIPT
+Customer: Omor
+
+Order Details:
+8" White Sandwich
+Toasted
+- Steak
+- Extra Steak
+- Provolone
+- Extra Provolone
+- Mushrooms
+- Mayo
+- Ranch
+Price: $12.10
+
+TOTAL: $12.10

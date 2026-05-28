@@ -1,0 +1,21 @@
+CHEESY BURG RECEIPT
+Customer: anam
+
+Order Details:
+4" White Sandwich
+Toasted
+- Steak
+- Extra Steak
+- American
+- Extra American
+- Mayo
+- Mustard
+Price: $8.05
+
+Large Drink
+Price: $3.00
+
+Chips
+Price: $1.50
+
+TOTAL: $12.55
