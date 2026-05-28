@@ -253,13 +253,9 @@ public class UserInterface {
                 totalPrice
         );
 
-        ReceiptFileManager.saveReceipt(
-                currentOrder
-        );
+        ReceiptFileManager.saveReceipt(currentOrder);
 
-        System.out.println(
-                "Receipt saved successfully!"
-        );
+        System.out.println("Receipt saved successfully!");
 
         currentOrder = null;
 

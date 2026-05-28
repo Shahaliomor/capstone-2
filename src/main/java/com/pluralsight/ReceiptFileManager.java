@@ -37,7 +37,99 @@ public class ReceiptFileManager {
 
             writer.write("Order Details:");
             writer.newLine();
+            for (Sandwich sandwich : order.getSandwiches()) {
 
+                writer.write(
+                        sandwich.getSize()
+                                + "\" "
+                                + sandwich.getBread()
+                                + " Sandwich"
+                );
+
+                writer.newLine();
+
+                if (sandwich.isToasted()) {
+                    writer.write("Toasted");
+                    writer.newLine();
+                }
+
+                for (Topping topping : sandwich.getToppings()) {
+
+                    writer.write(
+                            "- "
+                                    + topping.getName()
+                    );
+
+                    writer.newLine();
+                }
+
+                writer.write(
+                        String.format(
+                                "Price: $%.2f",
+                                sandwich.getPrice()
+                        )
+                );
+
+                writer.newLine();
+                writer.newLine();
+            }
+
+            for (Drink drink : order.getDrinks()) {
+
+                writer.write(
+                        drink.getSize()
+                                + " Drink"
+                );
+
+                writer.newLine();
+
+                writer.write(
+                        String.format(
+                                "Price: $%.2f",
+                                drink.getPrice()
+                        )
+                );
+
+                writer.newLine();
+                writer.newLine();
+            }
+            for (Chips chips : order.getChips()) {
+
+                writer.write("Chips");
+
+                writer.newLine();
+
+                writer.write(
+                        String.format(
+                                "Price: $%.2f",
+                                chips.getPrice()
+                        )
+                );
+
+                writer.newLine();
+                writer.newLine();
+            }
+
+            double totalPrice = 0;
+
+            for (Sandwich sandwich : order.getSandwiches()) {
+                totalPrice += sandwich.getPrice();
+            }
+
+            for (Drink drink : order.getDrinks()) {
+                totalPrice += drink.getPrice();
+            }
+
+            for (Chips chips : order.getChips()) {
+                totalPrice += chips.getPrice();
+            }
+
+            writer.write(
+                    String.format(
+                            "TOTAL: $%.2f",
+                            totalPrice
+                    )
+            );
             writer.close();
 
             return true;
