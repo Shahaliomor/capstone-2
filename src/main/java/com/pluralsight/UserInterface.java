@@ -184,6 +184,14 @@ public class UserInterface {
             displayHomeScreen();
             return;
         }
+        if(currentOrder.getSandwiches().isEmpty()
+                && currentOrder.getDrinks().isEmpty()
+                && currentOrder.getChips().isEmpty()) {
+
+            System.out.println("You must order at least a sandwich, drink, or chips.");
+            displayOrderScreen();
+            return;
+        }
 
         System.out.println("""
             ===== CHEESY BURG RECEIPT =====
