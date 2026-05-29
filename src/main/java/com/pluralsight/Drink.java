@@ -13,7 +13,7 @@ public class Drink implements PriceItem {
     public String getSize() {
         return size;
     }
-
+    // Regular drink with an extra charge.
     @Override
     public double getPrice() {
         return price;

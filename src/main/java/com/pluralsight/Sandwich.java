@@ -7,7 +7,7 @@ public class Sandwich implements PriceItem {
     private String bread;
     private boolean toasted;
     private ArrayList<Topping> toppings;
-
+    //Construction
     public Sandwich(int size, String bread, boolean toasted) {
         this.size = size;
         this.bread = bread;
@@ -36,7 +36,7 @@ public class Sandwich implements PriceItem {
     public ArrayList<Topping> getToppings() {
         return toppings;
     }
-
+    //get price depend on size.
     @Override
     public double getPrice() {
         double price = 0;
