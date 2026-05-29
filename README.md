@@ -1,6 +1,7 @@
 # 🍔 CHEESY BURG
 
 ## Description
+![img_5.png](img_5.png)
 CHEESY BURG is a Java command-line (CLI) application designed to simulate a custom sandwich shop ordering system. Customers can build their own sandwiches, select toppings, add drinks and chips, choose signature sandwiches, and generate receipts during checkout.
 
 This project demonstrates core Java concepts including file handling, collections, inheritance, interfaces, conditional logic, input validation, and object-oriented programming (OOP).
