@@ -19,11 +19,11 @@ public class Order {
     public ArrayList<Sandwich> getSandwiches() {
         return sandwiches;
     }
-
+    //get method
     public String getName() {
         return name;
     }
-
+    //Add in Arraylist
     public void addSandwich(Sandwich sandwich) {
         this.sandwiches.add(sandwich);
     }

@@ -47,11 +47,13 @@ This application includes two signature sandwiches:
 
 ## UML Diagram
 
-![img.png](img.png)![img_1.png](img_1.png)
+![img.png](img.png)!
 
 ---
 
 ## Code I'm Most Proud Of
+![img_3.png](img_3.png)
+I am proud of my getIntInput() method because it is one of my defensive programming solutions. Instead of assuming users will always enter valid numbers, I added validation to handle incorrect input gracefully. The method prevents the application from crashing, displays a helpful error message, and continues prompting until a valid integer is entered. This improved the reliability and user experience of my application.
 
 ![img_1.png](img_1.png)
 

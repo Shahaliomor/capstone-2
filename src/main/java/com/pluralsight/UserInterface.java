@@ -7,7 +7,7 @@ public class UserInterface {
     private Order currentOrder;
     private String name;
     public static Scanner input = new Scanner(System.in);
-
+    // Reads and validates an integer value entered by the user.
     public int getIntInput() {
         while (!input.hasNextInt()) {
             System.out.println("Invalid input. Please enter a number.");
@@ -18,7 +18,7 @@ public class UserInterface {
         input.nextLine();
         return number;
     }
-
+    // Displays the home screen menu and handles the user's selection.
     public void displayHomeScreen() {
         System.out.println("""
                 1) New Order
@@ -45,7 +45,7 @@ public class UserInterface {
             displayHomeScreen();
         }
     }
-
+    // Shows the current order options and processes the user's selection.
     public void displayOrderScreen() {
         System.out.println("""
                 1) Add Sandwich
@@ -79,7 +79,7 @@ public class UserInterface {
             displayOrderScreen();
         }
     }
-
+    // Prompts the user to build a sandwich and adds it to the current order.
     public void addSandwich() {
 
         System.out.println("""
@@ -169,7 +169,7 @@ public class UserInterface {
             addSandwich();
         }
     }
-
+    // Prompts the user to select a drink and adds it to the current order.
     public void addDrink() {
         while (true) {
 
@@ -221,7 +221,7 @@ public class UserInterface {
             return;
         }
     }
-
+    // Prompts the user to select chips and adds them to the current order.
     public void addChips() {
         while (true) {
 
@@ -257,7 +257,7 @@ public class UserInterface {
             }
         }
     }
-
+    // Processes the current order and generates a receipt for the customer.
     public void checkout() {
 
         if (currentOrder == null) {
@@ -344,7 +344,7 @@ public class UserInterface {
             checkout();
         }
     }
-
+    // Handles invalid user input.
     public boolean invalidOption() {
         System.out.println("Invalid choice " + name + ". Do you want to try again?");
         System.out.println("""
@@ -357,7 +357,7 @@ public class UserInterface {
 
         return choice == 1;
     }
-
+    // Calculates and returns the meat cost according to the sandwich size.
     public double getMeatPriceBySize() {
         if (sandwichInch == 4) {
             return 1.00;
@@ -369,7 +369,7 @@ public class UserInterface {
             return 3.00;
         }
     }
-
+    // Calculates and returns the cost of extra meat according to the sandwich size.
     public double getExtraMeatPriceBySize() {
         if (sandwichInch == 4) {
             return 0.50;
@@ -381,7 +381,7 @@ public class UserInterface {
             return 1.50;
         }
     }
-
+    // Calculates and returns the cheese cost according to the sandwich size.
     public double getCheesePriceBySize() {
         if (sandwichInch == 4) {
             return 0.75;
@@ -393,7 +393,7 @@ public class UserInterface {
             return 2.25 ;
         }
     }
-
+    // Calculates and returns the cost of extra cheese according to the sandwich size.
     public double getExtraCheesePriceBySize() {
         if (sandwichInch == 4) {
             return 0.30;
@@ -405,6 +405,7 @@ public class UserInterface {
             return 0.90;
         }
     }
+    // Prompts the user to select a bread type and returns the chosen option.
     public String getBreadType() {
         while (true) {
             System.out.println("""
@@ -436,7 +437,7 @@ public class UserInterface {
             }
         }
     }
-
+    // Retrieves the sandwich size selected by the user.
     public int getSandwichSize() {
         while (true) {
             System.out.println("""
@@ -464,6 +465,7 @@ public class UserInterface {
             }
         }
     }
+    // Adds selected meat options to the sandwich and updates its price.
     public void addMeat(Sandwich sandwich) {
         String meatName="No meat";
         double meatPrice = 0;
@@ -570,6 +572,7 @@ public class UserInterface {
             }
         }
     }
+    // Adds cheese toppings to the sandwich.
     public void addCheese(Sandwich sandwich) {
         String cheeseName = "";
         double cheesePrice = 0;
@@ -666,6 +669,7 @@ public class UserInterface {
             }
         }
     }
+    // Adds selected regular toppings to the sandwich.
     public void addRegularToppings(Sandwich sandwich){
 
         while (true) {
@@ -748,6 +752,7 @@ public class UserInterface {
             }
         }
     }
+    // Adds selected regular sauces to the sandwich
     public void addSauces(Sandwich sandwich){
 
         while (true) {
@@ -821,6 +826,7 @@ public class UserInterface {
             }
         }
     }
+    // Prompts the user to choose if the sandwich should be toasted.
     public void askToasted(Sandwich sandwich){
 
         System.out.println("""
@@ -835,7 +841,7 @@ public class UserInterface {
             sandwich.setToasted(true);
         }
     }
-
+    // Adds selected side options to the sandwich.
     public void addSides(Sandwich sandwich){
 
         while (true){
@@ -877,5 +883,4 @@ public class UserInterface {
             }
         }
     }
-
 }

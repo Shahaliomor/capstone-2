@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class PhillyCheeseSteak extends Sandwich {
-
+    // Creates a pre-configured Philly Cheese Steak sandwich with default toppings.
     public PhillyCheeseSteak() {
         super(8, "White", true);
 
