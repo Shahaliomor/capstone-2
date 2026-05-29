@@ -1,0 +1,9 @@
+CHEESY BURG RECEIPT
+Customer: jeba
+
+Order Details:
+
+Small Drink
+Price: $2.00
+
+TOTAL: $2.00

@@ -1,0 +1,9 @@
+CHEESY BURG RECEIPT
+Customer: dave
+
+Order Details:
+
+Chips
+Price: $1.50
+
+TOTAL: $1.50
