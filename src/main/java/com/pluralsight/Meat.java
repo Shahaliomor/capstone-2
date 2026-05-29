@@ -6,7 +6,6 @@ public class Meat extends Topping implements PriceItem{
         super(name);
         this.price=price;
     }
-
     @Override
     public double getPrice() {
         return price;

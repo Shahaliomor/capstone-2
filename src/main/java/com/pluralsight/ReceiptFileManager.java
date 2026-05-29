@@ -12,15 +12,13 @@ public class ReceiptFileManager {
 
         try {
 
-            File folder =
-                    new File("src/main/resources/Receipt");
+            File folder = new File("src/main/resources/Receipt");
             // Create the Receipt folder automatically if it does not exist
             if (!folder.exists()) {
                 folder.mkdir();
             }
 
-            DateTimeFormatter formatter =
-                    DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
 
             String fileName = LocalDateTime.now().format(formatter) + ".txt";
 
@@ -37,14 +35,11 @@ public class ReceiptFileManager {
 
             writer.write("Order Details:");
             writer.newLine();
+            writer.newLine();
             for (Sandwich sandwich : order.getSandwiches()) {
 
                 writer.write(
-                        sandwich.getSize()
-                                + "\" "
-                                + sandwich.getBread()
-                                + " Sandwich"
-                );
+                        sandwich.getSize() + "\" " + sandwich.getBread() + " Sandwich");
 
                 writer.newLine();
 
@@ -55,20 +50,12 @@ public class ReceiptFileManager {
 
                 for (Topping topping : sandwich.getToppings()) {
 
-                    writer.write(
-                            "- "
-                                    + topping.getName()
-                    );
+                    writer.write("- " + topping.getName());
 
                     writer.newLine();
                 }
 
-                writer.write(
-                        String.format(
-                                "Price: $%.2f",
-                                sandwich.getPrice()
-                        )
-                );
+                writer.write(String.format("Price: $%.2f", sandwich.getPrice()));
 
                 writer.newLine();
                 writer.newLine();
@@ -76,19 +63,11 @@ public class ReceiptFileManager {
 
             for (Drink drink : order.getDrinks()) {
 
-                writer.write(
-                        drink.getSize()
-                                + " Drink"
-                );
+                writer.write(drink.getSize() + " Drink");
 
                 writer.newLine();
 
-                writer.write(
-                        String.format(
-                                "Price: $%.2f",
-                                drink.getPrice()
-                        )
-                );
+                writer.write(String.format("Price: $%.2f", drink.getPrice()));
 
                 writer.newLine();
                 writer.newLine();
@@ -99,36 +78,14 @@ public class ReceiptFileManager {
 
                 writer.newLine();
 
-                writer.write(
-                        String.format(
-                                "Price: $%.2f",
-                                chips.getPrice()
-                        )
-                );
+                writer.write(String.format("Price: $%.2f", chips.getPrice()));
 
                 writer.newLine();
                 writer.newLine();
-            }
-
-            double totalPrice = 0;
-
-            for (Sandwich sandwich : order.getSandwiches()) {
-                totalPrice += sandwich.getPrice();
-            }
-
-            for (Drink drink : order.getDrinks()) {
-                totalPrice += drink.getPrice();
-            }
-
-            for (Chips chips : order.getChips()) {
-                totalPrice += chips.getPrice();
             }
 
             writer.write(
-                    String.format(
-                            "TOTAL: $%.2f",
-                            totalPrice
-                    )
+                    String.format("TOTAL: $%.2f", order.getTotalPrice())
             );
             writer.close();
 

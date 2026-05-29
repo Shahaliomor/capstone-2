@@ -8,9 +8,7 @@ public class Main {
        //keep application running until user exits.
         while (true) {
             ui.displayHomeScreen();
-            System.out.println("Thanks For visiting CHEESY BURG.");
             break;
-
         }
 
     }

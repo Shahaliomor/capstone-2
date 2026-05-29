@@ -179,11 +179,10 @@ public class UserInterface {
 
     public void checkout() {
 
-        double totalPrice = 0;
-
-        if(currentOrder==null){
+        if (currentOrder == null) {
             System.out.println("There is no current order!");
-            displayOrderScreen();
+            displayHomeScreen();
+            return;
         }
 
         System.out.println("""
@@ -202,48 +201,60 @@ public class UserInterface {
             }
 
             for (Topping topping : sandwich.getToppings()) {
-
                 System.out.println("- " + topping.getName());
             }
 
             System.out.printf("Price: $%.2f%n", sandwich.getPrice());
-
             System.out.println();
-
-            totalPrice += sandwich.getPrice();
         }
 
         for (Drink drink : currentOrder.getDrinks()) {
 
             System.out.println(drink.getSize() + " Drink");
-
             System.out.printf("Price: $%.2f%n", drink.getPrice());
-
             System.out.println();
-
-            totalPrice += drink.getPrice();
         }
 
         for (Chips chips : currentOrder.getChips()) {
 
             System.out.println("Chips");
-
             System.out.printf("Price: $%.2f%n", chips.getPrice());
-
             System.out.println();
-
-            totalPrice += chips.getPrice();
         }
 
-        System.out.printf("TOTAL: $%.2f%n", totalPrice);
+        System.out.printf("TOTAL: $%.2f%n", currentOrder.getTotalPrice());
 
-        ReceiptFileManager.saveReceipt(currentOrder);
+        System.out.println("""
+            
+            1) Confirm
+            2) Cancel
+            """);
 
-        System.out.println("Receipt saved successfully!");
+        System.out.print("Choose an option: ");
+        int choice = input.nextInt();
+        input.nextLine();
 
-        currentOrder = null;
+        if (choice == 1) {
+            boolean saved = ReceiptFileManager.saveReceipt(currentOrder);
 
-        displayHomeScreen();
+            if (saved) {
+                System.out.println("Receipt saved successfully!");
+            } else {
+                System.out.println("Receipt was not saved.");
+            }
+
+            currentOrder = null;
+            displayHomeScreen();
+        }
+        else if (choice == 2) {
+            System.out.println("Order cancelled.");
+            currentOrder = null;
+            displayHomeScreen();
+        }
+        else {
+            System.out.println("Invalid choice.");
+            checkout();
+        }
     }
 
     public boolean invalidOption() {
