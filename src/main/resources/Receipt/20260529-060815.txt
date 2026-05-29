@@ -1,0 +1,8 @@
+CHEESY BURG RECEIPT
+Customer: 1
+
+Order Details:
+Medium Drink
+Price: $2.50
+
+TOTAL: $2.50

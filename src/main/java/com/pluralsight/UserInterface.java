@@ -181,6 +181,11 @@ public class UserInterface {
 
         double totalPrice = 0;
 
+        if(currentOrder==null){
+            System.out.println("There is no current order!");
+            displayOrderScreen();
+        }
+
         System.out.println("""
             ===== CHEESY BURG RECEIPT =====
             """);
@@ -190,11 +195,7 @@ public class UserInterface {
 
         for (Sandwich sandwich : currentOrder.getSandwiches()) {
 
-            System.out.println(
-                    sandwich.getSize() + "\" "
-                            + sandwich.getBread()
-                            + " Sandwich"
-            );
+            System.out.println(sandwich.getSize() + "\" " + sandwich.getBread() + " Sandwich");
 
             if (sandwich.isToasted()) {
                 System.out.println("Toasted");
@@ -202,15 +203,10 @@ public class UserInterface {
 
             for (Topping topping : sandwich.getToppings()) {
 
-                System.out.println(
-                        "- " + topping.getName()
-                );
+                System.out.println("- " + topping.getName());
             }
 
-            System.out.printf(
-                    "Price: $%.2f%n",
-                    sandwich.getPrice()
-            );
+            System.out.printf("Price: $%.2f%n", sandwich.getPrice());
 
             System.out.println();
 
@@ -219,15 +215,9 @@ public class UserInterface {
 
         for (Drink drink : currentOrder.getDrinks()) {
 
-            System.out.println(
-                    drink.getSize()
-                            + " Drink"
-            );
+            System.out.println(drink.getSize() + " Drink");
 
-            System.out.printf(
-                    "Price: $%.2f%n",
-                    drink.getPrice()
-            );
+            System.out.printf("Price: $%.2f%n", drink.getPrice());
 
             System.out.println();
 
@@ -238,20 +228,14 @@ public class UserInterface {
 
             System.out.println("Chips");
 
-            System.out.printf(
-                    "Price: $%.2f%n",
-                    chips.getPrice()
-            );
+            System.out.printf("Price: $%.2f%n", chips.getPrice());
 
             System.out.println();
 
             totalPrice += chips.getPrice();
         }
 
-        System.out.printf(
-                "TOTAL: $%.2f%n",
-                totalPrice
-        );
+        System.out.printf("TOTAL: $%.2f%n", totalPrice);
 
         ReceiptFileManager.saveReceipt(currentOrder);
 
