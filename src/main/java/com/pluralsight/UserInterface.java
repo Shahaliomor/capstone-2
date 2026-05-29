@@ -8,6 +8,16 @@ public class UserInterface {
     private String name;
     public static Scanner input = new Scanner(System.in);
 
+    public int getIntInput() {
+        while (!input.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number.");
+            input.nextLine();
+        }
+
+        int number = input.nextInt();
+        input.nextLine();
+        return number;
+    }
 
     public void displayHomeScreen() {
         System.out.println("""
@@ -16,8 +26,7 @@ public class UserInterface {
                 """);
 
         System.out.print("Choose an option: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         if (choice == 1) {
             System.out.print("Can I have your name please: ");
@@ -47,8 +56,7 @@ public class UserInterface {
                 """);
 
         System.out.print("Choose an option: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         if (choice == 1) {
             addSandwich();
@@ -83,8 +91,7 @@ public class UserInterface {
             """);
 
         System.out.print("Choose an option: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         if (choice == 1) {
             String breadType = getBreadType();
@@ -113,8 +120,7 @@ public class UserInterface {
                 2) No
                 """);
 
-            int customize = input.nextInt();
-            input.nextLine();
+            int customize = getIntInput();
 
             if (customize == 1) {
                 sandwichInch = blt.getSize();
@@ -139,8 +145,7 @@ public class UserInterface {
                 2) No
                 """);
 
-            int customize = input.nextInt();
-            input.nextLine();
+            int customize = getIntInput();
 
             if (customize == 1) {
                 sandwichInch = philly.getSize();
@@ -177,8 +182,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             String size = "";
             double price = 0;
@@ -228,8 +232,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
 
@@ -317,8 +320,7 @@ public class UserInterface {
             """);
 
         System.out.print("Choose an option: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         if (choice == 1) {
             boolean saved = ReceiptFileManager.saveReceipt(currentOrder);
@@ -351,8 +353,7 @@ public class UserInterface {
                 """);
 
         System.out.print("Choose 1 or 2: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         return choice == 1;
     }
@@ -415,8 +416,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
                 return "White";
@@ -447,8 +447,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
                 return 4;
@@ -478,8 +477,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
                 meatPrice = getMeatPriceBySize();
@@ -496,8 +494,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int meatChoice = input.nextInt();
-                    input.nextLine();
+                    int meatChoice = getIntInput();
 
                     if (meatChoice == 1) {
                         meatName = "Steak";
@@ -539,8 +536,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int extraChoice = input.nextInt();
-                    input.nextLine();
+                    int extraChoice = getIntInput();
 
                     if (extraChoice == 1) {
                         extraMeatPrice = getExtraMeatPriceBySize();
@@ -587,8 +583,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
                 cheesePrice = getCheesePriceBySize();
@@ -603,8 +598,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int cheeseChoice = input.nextInt();
-                    input.nextLine();
+                    int cheeseChoice = getIntInput();
 
                     if (cheeseChoice == 1) {
                         cheeseName = "American";
@@ -640,9 +634,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int extraChoice = input.nextInt();
-                    input.nextLine();
-
+                    int extraChoice = getIntInput();
                     if (extraChoice == 1) {
                         extraCheesePrice = getExtraCheesePriceBySize();
 
@@ -684,8 +676,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
 
@@ -706,9 +697,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int toppingChoice = input.nextInt();
-                    input.nextLine();
-
+                    int toppingChoice = getIntInput();
                     String toppingName="";
 
                     if (toppingChoice == 1) {
@@ -769,8 +758,7 @@ public class UserInterface {
                 """);
 
             System.out.print("Choose an option: ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if (choice == 1) {
 
@@ -788,9 +776,7 @@ public class UserInterface {
                         """);
 
                     System.out.print("Choose an option: ");
-                    int sauceChoice = input.nextInt();
-                    input.nextLine();
-
+                    int sauceChoice = getIntInput();
                     String sauceName = "";
 
                     if (sauceChoice == 1) {
@@ -843,8 +829,7 @@ public class UserInterface {
             2) No
             """);
 
-        int choice = input.nextInt();
-        input.nextLine();
+        int choice = getIntInput();
 
         if(choice == 1){
             sandwich.setToasted(true);
@@ -862,8 +847,7 @@ public class UserInterface {
                 3) None
                 """);
 
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = getIntInput();
 
             if(choice == 1){
 
