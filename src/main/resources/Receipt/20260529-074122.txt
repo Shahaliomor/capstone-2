@@ -1,0 +1,30 @@
+CHEESY BURG RECEIPT
+Customer: omoranam
+
+Order Details:
+
+8" White Sandwich
+Toasted
+- Steak
+- American
+- Peppers
+- Mayo
+- Salami
+- Extra Salami
+- American
+- Extra American
+- Peppers
+- Mushrooms
+- Mayo
+Price: $15.60
+
+8" White Sandwich
+Toasted
+- Bacon
+- Cheddar
+- Lettuce
+- Tomatoes
+- Ranch
+Price: $10.50
+
+TOTAL: $26.10

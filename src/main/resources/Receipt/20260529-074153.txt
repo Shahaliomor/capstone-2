@@ -1,0 +1,9 @@
+CHEESY BURG RECEIPT
+Customer: anam
+
+Order Details:
+
+Large Drink
+Price: $3.00
+
+TOTAL: $3.00
