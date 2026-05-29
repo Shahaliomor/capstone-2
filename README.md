@@ -47,6 +47,13 @@ This application includes two signature sandwiches:
 
 ## UML Diagram
 
+# Before Development
+
+This UML diagram represents the original design and planning of the application before development began.
+![img_4.png](img_4.png)
+## After Development
+
+This UML diagram represents the final implementation after features, classes, and relationships were refined throughout the development process.
 ![img.png](img.png)!
 
 ---
