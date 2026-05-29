@@ -1,0 +1,14 @@
+CHEESY BURG RECEIPT
+Customer: jona
+
+Order Details:
+
+8" White Sandwich
+Toasted
+- Steak
+- American
+- Peppers
+- Mayo
+Price: $10.50
+
+TOTAL: $10.50

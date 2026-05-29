@@ -73,18 +73,96 @@ public class UserInterface {
     }
 
     public void addSandwich() {
-        // Build sandwich step-by-step by calling methods in order:
-        String breadType = getBreadType();
-        sandwichInch = getSandwichSize();
-        Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
-        addMeat(sandwich);
-        addCheese(sandwich);
-        addRegularToppings(sandwich);
-        addSauces(sandwich);
-        askToasted(sandwich);
-        addSides(sandwich);
-        currentOrder.addSandwich(sandwich);
-        displayOrderScreen();
+
+        System.out.println("""
+            Select sandwich option:
+            1) Build Your Own Sandwich
+            2) BLT
+            3) Philly Cheese Steak
+            0) Cancel
+            """);
+
+        System.out.print("Choose an option: ");
+        int choice = input.nextInt();
+        input.nextLine();
+
+        if (choice == 1) {
+            String breadType = getBreadType();
+            sandwichInch = getSandwichSize();
+
+            Sandwich sandwich = new Sandwich(sandwichInch, breadType, false);
+
+            addMeat(sandwich);
+            addCheese(sandwich);
+            addRegularToppings(sandwich);
+            addSauces(sandwich);
+            askToasted(sandwich);
+            addSides(sandwich);
+
+            currentOrder.addSandwich(sandwich);
+
+            System.out.println("Custom sandwich added!");
+            displayOrderScreen();
+        }
+        else if (choice == 2) {
+            Sandwich blt = new BLT();
+
+            System.out.println("Do you want to customize your BLT?");
+            System.out.println("""
+                1) Yes
+                2) No
+                """);
+
+            int customize = input.nextInt();
+            input.nextLine();
+
+            if (customize == 1) {
+                sandwichInch = blt.getSize();
+                addMeat(blt);
+                addCheese(blt);
+                addRegularToppings(blt);
+                addSauces(blt);
+                addSides(blt);
+            }
+
+            currentOrder.addSandwich(blt);
+
+            System.out.println("BLT added!");
+            displayOrderScreen();
+        }
+        else if (choice == 3) {
+            Sandwich philly = new PhillyCheeseSteak();
+
+            System.out.println("Do you want to customize your Philly Cheese Steak?");
+            System.out.println("""
+                1) Yes
+                2) No
+                """);
+
+            int customize = input.nextInt();
+            input.nextLine();
+
+            if (customize == 1) {
+                sandwichInch = philly.getSize();
+                addMeat(philly);
+                addCheese(philly);
+                addRegularToppings(philly);
+                addSauces(philly);
+                addSides(philly);
+            }
+
+            currentOrder.addSandwich(philly);
+
+            System.out.println("Philly Cheese Steak added!");
+            displayOrderScreen();
+        }
+        else if (choice == 0) {
+            displayOrderScreen();
+        }
+        else {
+            System.out.println("Invalid choice.");
+            addSandwich();
+        }
     }
 
     public void addDrink() {
